@@ -1,11 +1,9 @@
-<!--
 ---
 title: Streamlit Data Explorer
 sdk: streamlit
 sdk_version: "1.45.0"
 app_file: app.py
 ---
--->
 
 # Streamlit Data Explorer
 
