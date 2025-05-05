@@ -1,10 +1,10 @@
 ---
 title: Streamlit Data Explorer
 emoji: 📊
-colorFrom: pink
-colorTo: indigo
+colorFrom: gray
+colorTo: blue
 sdk: streamlit
-sdk_version: "1.32.2"
+sdk_version: 1.45.0
 app_file: app.py
 pinned: false
 ---
