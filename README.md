@@ -1,3 +1,14 @@
+---
+title: Streamlit Data Explorer
+emoji: 📊
+colorFrom: pink
+colorTo: indigo
+sdk: streamlit
+sdk_version: "1.32.2"
+app_file: app.py
+pinned: false
+---
+
 # Streamlit Data Explorer
 
 This project allows you to interactively explore datasets in CSV format using Streamlit. It can be deployed either as a Hugging Face Space or run locally.
