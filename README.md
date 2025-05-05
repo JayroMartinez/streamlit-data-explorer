@@ -28,3 +28,9 @@ Select the Streamlit template.
 Upload these files or link your GitHub repository.
 
 Make sure the requirements.txt file is included.
+
+## Live demo
+
+You can try the app online via Hugging Face Spaces:
+
+[https://huggingface.co/spaces/JayroMartinez/streamlit-data-explorer](https://huggingface.co/spaces/JayroMartinez/streamlit-data-explorer)
