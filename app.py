@@ -10,7 +10,6 @@ st.markdown(
     "If no file is uploaded, a default Netflix dataset will be used."
 )
 
-# File upload
 uploaded_file = st.file_uploader("Upload CSV file", type="csv")
 
 # Load data
@@ -25,26 +24,27 @@ else:
         st.error("No file uploaded and default file not found.")
         st.stop()
 
-# Show dataframe preview
-st.subheader("Dataset Preview")
-n_rows = st.slider("Number of rows to view", 5, min(100, len(df)), 10)
-st.dataframe(df.head(n_rows))
-
 # Filters
 st.subheader("Column Filters")
 filtered_df = df.copy()
 
 for col in df.columns:
-    if df[col].dtype == "object" and df[col].nunique() <= 20:
-        selected = st.multiselect(f"Filter '{col}'", options=df[col].dropna().unique())
+    if pd.api.types.is_numeric_dtype(df[col]):
+        min_val, max_val = int(df[col].min()), int(df[col].max())
+        selected_range = st.slider(f"Range for '{col}'", min_val, max_val, (min_val, max_val), step=1)
+        filtered_df = filtered_df[(df[col] >= selected_range[0]) & (df[col] <= selected_range[1])]
+    elif df[col].dtype == "object" and df[col].nunique() <= 50:
+        options = df[col].dropna().unique().tolist()
+        selected = st.multiselect(f"Filter '{col}'", options=options)
         if selected:
             filtered_df = filtered_df[filtered_df[col].isin(selected)]
-    elif pd.api.types.is_numeric_dtype(df[col]):
-        min_val, max_val = float(df[col].min()), float(df[col].max())
-        selected_range = st.slider(f"Range for '{col}'", min_val, max_val, (min_val, max_val))
-        filtered_df = filtered_df[(df[col] >= selected_range[0]) & (df[col] <= selected_range[1])]
 
-# Plots
+# Show filtered preview
+st.subheader("Filtered Dataset Preview")
+n_rows = st.slider("Number of rows to view", 5, min(100, len(filtered_df)), 10)
+st.dataframe(filtered_df.head(n_rows))
+
+# Visualization
 st.subheader("Data Visualization")
 
 numeric_cols = filtered_df.select_dtypes(include=["float64", "int64"]).columns.tolist()
