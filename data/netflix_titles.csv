@@ -1,0 +1,3 @@
+show_id,type,title,director,cast,country,date_added,release_year,rating,duration,listed_in,description
+s1,Movie,Example Movie,John Doe,"Actor A, Actor B",United States,January 1, 2020,2020,PG,90 min,"Dramas","A sample movie description."
+s2,TV Show,Example Show,Jane Smith,"Actor C, Actor D",Canada,February 15, 2021,2021,TV-MA,2 Seasons,"TV Dramas","A sample show description."
